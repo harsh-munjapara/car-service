@@ -40,7 +40,6 @@ if (isset($_POST['update'])) {
 </head>
 
 <body>
-hello
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <?php require('sidebar.php') ?>

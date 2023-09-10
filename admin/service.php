@@ -59,7 +59,7 @@ $qry = mysqli_query($conn, $selectqry);
                                         <td><?php echo $r['sname'] ?></td>
                                         <td>
                                             <span class="image-icon">
-                                                <img src="..<?php echo $r['image'] ?>" alt="image" class="img-fluid rounded">
+                                                <img src="../img/<?php echo $r['image']; ?>" alt="image" class="img-fluid rounded">
                                             </span>
                                         </td>
                                         <td><?php echo $r['serviceDesc'] ?></td>
