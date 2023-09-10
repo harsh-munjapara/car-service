@@ -23,7 +23,7 @@ if (isset($_POST['update'])) {
     echo $qry. "<br>";
     mysqli_query($conn, $qry) or die('Not Inserted !!');
     echo "Updated Successfully :)";
-    header('Location: http://localhost/Car_service/admin/service.php');
+    header('Location: ./service.php',);
 }
 ?>
 

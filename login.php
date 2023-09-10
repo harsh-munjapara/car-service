@@ -27,11 +27,11 @@
                 
                 if ($data_fetch['type'] == 'admin') {
                     $_SESSION['username'] = 'Boss'; 
-                    header('Location: admin_panel.php');
+                    header('Location: ./admin/',);
                 }
                 else{
                     $_SESSION['username'] = $data_fetch['username'];
-                    header('Location: user_home.php');
+                    header('Location: index.php');
                 }
             }
             else{
