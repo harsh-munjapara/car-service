@@ -40,7 +40,7 @@ require '../connection.php';
                                     <th>OWNER</th>
                                     <th>CONTECT No.</th>
                                     <th>ADDRESS</th>
-                                    <th>REQ_TYPE</th>
+                                    <th>Car_NUMBER</th>
                                     <th>CAR_NAME</th>
                                     <th>SERVICES</th>
                                     <th>ACTION</th>
@@ -57,12 +57,12 @@ require '../connection.php';
                                         <td><?php echo $r['oname'] ?></td>
                                         <td><?php echo $r['contact'] ?></td>
                                         <td><?php echo $r['address'] ?></td>
-                                        <td><?php echo $r['requestType'] ?></td>
-                                        <td><?php echo $r['vehicle_name'] ?></td>
+                                        <td><?php echo $r['vnumber'] ?></td>
+                                        <td><?php echo $r['vname'] ?></td>
                                         <td><?php echo $r['services'] ?></td>
                                         <td>
-                                            <a href="edit-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-success">Edit</a>
-                                            <a href="delete-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                            <a href="edit-service.php?sid=<?php echo $r['id'] ?>" class="btn btn-success">Edit</a>
+                                            <a href="delete-service.php?sid=<?php echo $r['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
