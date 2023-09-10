@@ -20,7 +20,7 @@ require 'connection.php';
 </head>
 
 <body>
-
+    <h1>I am Harit tilavat</h1>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: #e3f2fd;">
         <div class="container-fluid ps-5">
