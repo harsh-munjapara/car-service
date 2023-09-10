@@ -17,6 +17,10 @@
                     <i class="fs-4 fa fa-info-circle"></i> <span class="ms-1 d-none d-sm-inline">Services</span> </a>
             </li>
             <li class="mt-2">
+                <a href="./request.php" class="nav-link px-0 align-middle">
+                    <i class="fs-4 fa fa-list-check"></i> <span class="ms-1 d-none d-sm-inline">Requests</span> </a>
+            </li>
+            <li class="mt-2">
                 <a href="../logout.php" class="nav-link px-0 align-middle">
                     <i class="fs-4 fa fa-sign-out"></i> <span class="ms-1 d-none d-sm-inline">Log Out</span> </a>
             </li>

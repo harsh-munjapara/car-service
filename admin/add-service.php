@@ -28,9 +28,7 @@ if (isset($_POST['submit'])) {
         $file_name = $_FILES['image']['name'];
         $temp_file = $_FILES['image']['tmp_name'];
         
-        if(!file_exists($file_name)){
-            move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
-        }
+        move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
     }
 
     header('Location: http://localhost/Car_service/admin/service.php');
