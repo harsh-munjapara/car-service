@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $r['sname']?></h5>
                             <p class="card-text"><?php echo $r['serviceDesc']?></p>
-                            <button class="btn btn-dark">Get Service</button>
+                            <a href="send_req.php" class="btn btn-dark">Send Request</a>
                         </div>
                     </div>
                 </div>

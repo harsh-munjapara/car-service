@@ -52,8 +52,8 @@
     <title>Login page</title>
 </head>
 <body>
-    <div class="container m-5">
-    <form action="" method="post" class="border border-dark rounded p-5" style="width: 30%; margin:auto;">
+    <div class="container my-5">
+    <form action="" method="post" class="border border-dark rounded p-5" style="width: 40%; margin:auto;">
             <h1 style="text-align: center;"> LOG IN </h1>
             <div class="mb-3">
                 <label for="uname" class="form-label"> Username</label>

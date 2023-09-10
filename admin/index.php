@@ -1,15 +1,24 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['username'])) {
-    header('Location: ../login.php',);
+    // echo "<h1> $</h1>"
+    // print_r($_SESSION);
+if ($_SESSION['username']!=='Boss') {
+    header('Location: ../','');
 }
 
 require '../connection.php';
 
-$selectqry = "select * from  user";
+$userQry = "select * from  user";
+$serviceQry = "select * from  services";
+$finishQry = "select * from  service_request where status=1";
+$requestQry = "select * from  service_request";
 
-$qry = mysqli_query($conn, $selectqry);
+
+$totalUser=mysqli_num_rows(mysqli_query($conn, $userQry));
+$totalService=mysqli_num_rows(mysqli_query($conn, $serviceQry));
+$totalFinished=mysqli_num_rows(mysqli_query($conn, $finishQry));
+$totalRequest=mysqli_num_rows(mysqli_query($conn, $requestQry));
+// Total Numbers of Rows will be counted...
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +31,9 @@ $qry = mysqli_query($conn, $selectqry);
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -30,38 +42,54 @@ $qry = mysqli_query($conn, $selectqry);
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">This is Dashboard</h1>
+                    <h1 class=" mt-5">Dashboard</h1> <hr>
                 </div>
                 <div class="containe">
                     <div class="row">
-                    <div class="card text-white bg-primary mx-2 mt-4" style="max-width: 18rem;">
-                        <div class="card-header">Services</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Total </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="col-6 mb-4">
+                            <div class="card text-white bg-primary " >
+                                <div class="card-header">
+                                    <h4>Total Services</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $totalService?> </h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card text-white bg-success mx-2 mt-4" style="max-width: 18rem;">
-                        <div class="card-header">Services</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Total </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="col-6 mb-4">
+                            <div class="card text-white bg-success " >
+                                <div class="card-header">
+                                    <h4>Service Request</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $totalRequest?> </h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card text-white bg-danger mx-2 mt-4" style="max-width: 18rem;">
-                        <div class="card-header">Services</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Total </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="col-6 mb-4">
+                            <div class="card text-white bg-danger " >
+                                <div class="card-header">
+                                    <h4>Finished Request</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $totalFinished?></h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card text-white bg-warning mx-2 mt-4" style="max-width: 18rem;">
-                        <div class="card-header">Services</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Total </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="col-6 mb-4">
+                            <div class="card text-white bg-warning " >
+                                <div class="card-header">
+                                    <h4>Users</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $totalUser?></h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>

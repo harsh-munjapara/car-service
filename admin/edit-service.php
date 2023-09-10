@@ -54,6 +54,7 @@ if (isset($_POST['update'])) {
                         <div class="col-12">
                             <form action="" method="post" class="border p-5" style="width: 50%; margin:auto;">
                                 <h1 style="text-align: center;">EDIT RECORD</h1>
+                                <hr>
                                 <div class="mb-3">
                                     <label for="sname" class="form-label">Serivce Name</label>
                                     <input type="text" class="form-control" id="sname" name="sname" value="<?php echo $arrdata['sname']; ?>" required>

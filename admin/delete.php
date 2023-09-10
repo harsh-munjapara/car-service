@@ -1,11 +1,11 @@
 <?php
-    require 'connection.php';
+    require '../connection.php';
 
-    $ids = $_GET['id'];
+    $ids = $_GET['sid'];
 
     $qry = "delete from user where id='{$ids}'";
 
     mysqli_query($conn, $qry) or die("Not Deleted !!");
 
-    header('Location: user_rec.php');
+    header('Location: ./');
 ?>

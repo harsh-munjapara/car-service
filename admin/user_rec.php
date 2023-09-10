@@ -29,7 +29,7 @@ $qry = mysqli_query($conn, $selectqry);
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">Records Of Services</h1>
+                    <h1 class="text-center mt-5">Records Of Users</h1><hr>
                     <table class="table table-striped text-center mt-5">
                         <thead>
                             <tr>
@@ -49,7 +49,7 @@ $qry = mysqli_query($conn, $selectqry);
                                         <td><?php echo $r['username']; ?></td>
                                         <td><?php echo $r['email']; ?></td>
                                         <td><a href="update.php?sid=<?php echo $r['id']; ?>" class="btn btn-success">Edit</a></td>
-                                        <td><a href="delete.php?sid=<?php echo $r['id']; ?>" class="btn btn-danger" onclick="confirm_delete()">Delete</a></td>
+                                        <td><a href="delete.php?sid=<?php echo $r['id']; ?>" class="btn btn-danger" onclick="return confirm+('Are you sure to delete this user?')">Delete</a></td>
                                     </tr>
                             <?php
                                 }

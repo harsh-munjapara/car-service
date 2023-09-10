@@ -13,7 +13,7 @@ require '../connection.php';
 
 if (isset($_POST['submit'])) {
     $new_sname = $_POST['sname'];
-    $new_image = $_FILES['image']['name'];
+    $new_image = '/img/'.$_FILES['image']['name'];
     $new_desc = $_POST['service_desc'];
     $new_price = $_POST['price'];
     $new_active = $_POST['is_active'];
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
     }
 
-    header('Location: http://localhost/Car_service/admin/service.php');
+    header('Location: service.php');
 }
 
 ?>
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <form action="" method="post" enctype="multipart/form-data" class="border p-5 w-50 m-auto">
-                                <h1 style="text-align: center;">Insert Record</h1>
+                                <h1 style="text-align: center;">Insert Record</h1><hr>
                                 <div class="mb-3">
                                     <label for="sname" class="form-label">Serivce Name</label>
                                     <input type="text" class="form-control" id="sname" name="sname" value="" required>
