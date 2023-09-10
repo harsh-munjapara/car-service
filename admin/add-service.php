@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     $new_active = $_POST['is_active'];
 
     // $qry = "insert into services values sname='{$new_sname}', serviceDesc='{$new_desc}',image='{$new_img}', isActive={$new_active}, price={$new_price}";
-    $qry = "INSERT INTO `services`(`sname`, `image`, `serviceDesc`, `isActive`, `price`) VALUES ('$new_sname','$new_desc','$new_img',$new_active,$new_price)";
+    $qry = "INSERT INTO `services`(`sname`, `image`, `serviceDesc`, `isActive`, `price`) VALUES ('$new_sname','$new_img','$new_desc',$new_active,$new_price)";
     echo $qry. "<br>";
     mysqli_query($conn, $qry) or die('Not Inserted !!');
     echo "Updated Successfully :)";
@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
     <title>Document</title>
 </head>
 
+ hello
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
