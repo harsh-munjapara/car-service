@@ -6,10 +6,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 require '../connection.php';
-
-$selectqry = "select * from  user";
-
-$qry = mysqli_query($conn, $selectqry);
 ?>
 
 <!DOCTYPE html>
@@ -30,43 +26,40 @@ $qry = mysqli_query($conn, $selectqry);
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">This is Services Table</h1>
+                    <h1 class="text-center mt-5">This is Request Table</h1>
                     <div class="search mb-5">
                         <label for="search">Search here... </label>
                         <input type="text" name="" id="search" class="form-control w-25 border-dark">
+                        
                     </div>
                     <div class="table-responsive text-center">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>SID</th>
-                                    <th>Service name</th>
-                                    <th>Image</th>
-                                    <th>Service Description</th>
-                                    <th>Price</th>
-                                    <th>IsActive</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>OWNER</th>
+                                    <th>CONTECT No.</th>
+                                    <th>ADDRESS</th>
+                                    <th>REQ_TYPE</th>
+                                    <th>CAR_NAME</th>
+                                    <th>SERVICES</th>
+                                    <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $qry = "select * from services";
+                                $qry = "select * from service_request";
                                 $result = mysqli_query($conn, $qry);
                                 while ($r = mysqli_fetch_assoc($result)) :
                                 ?>
                                     <tr>
-                                        <td><?php echo $r['sid'] ?></td>
-                                        <td><?php echo $r['sname'] ?></td>
-                                        <td>
-                                            <span class="image-icon">
-                                                <img src="../img/<?php echo $r['image']; ?>" alt="image" class="img-fluid rounded">
-                                            </span>
-                                        </td>
-                                        <td><?php echo $r['serviceDesc'] ?></td>
-                                        <td><?php echo $r['price'] ?></td>
-                                        <td>
-                                            <i class="<?php echo $r['isActive'] ? 'fa fa-check' : 'fa fa-xmark' ?>"></i>
-                                        </td>
+                                        <td><?php echo $r['id'] ?></td>
+                                        <td><?php echo $r['oname'] ?></td>
+                                        <td><?php echo $r['contact'] ?></td>
+                                        <td><?php echo $r['address'] ?></td>
+                                        <td><?php echo $r['requestType'] ?></td>
+                                        <td><?php echo $r['vehicle_name'] ?></td>
+                                        <td><?php echo $r['services'] ?></td>
                                         <td>
                                             <a href="edit-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-success">Edit</a>
                                             <a href="delete-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
@@ -75,18 +68,12 @@ $qry = mysqli_query($conn, $selectqry);
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
-                        <div class="action">
-                            <a href="add-service.php" class="btn btn-dark">Add Service</a>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-
-    </script>
 </body>
 
 </html>
