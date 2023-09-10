@@ -26,10 +26,10 @@ require '../connection.php';
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">This is Request Table</h1>
-                    <div class="search mb-5">
+                    <h1 class="text-center mt-5">Service Requests</h1><hr>
+                    <div class="search mb-5 ">
                         <label for="search">Search here... </label>
-                        <input type="text" name="" id="search" class="form-control w-25 border-dark">
+                        <input type="text" name="" id="search" class="form-control w-25"><hr>
                         
                     </div>
                     <div class="table-responsive text-center">
@@ -40,7 +40,7 @@ require '../connection.php';
                                     <th>OWNER</th>
                                     <th>CONTECT No.</th>
                                     <th>ADDRESS</th>
-                                    <th>Car_NUMBER</th>
+                                    <th>CAR_NUMBER</th>
                                     <th>CAR_NAME</th>
                                     <th>SERVICES</th>
                                     <th>ACTION</th>

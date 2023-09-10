@@ -108,10 +108,10 @@ require 'connection.php';
                         VALUES ('$oname','$contact','$address','$vnumber','$vname','$services')";
                         $result=mysqli_query($conn,$qry);
                         if($result){
-                            alert_message('Request send successfully!');
-                            header('Location: http://localhost/car-service/');
+                            // alert_message('Request send successfully!');
+                            header('Location: ./',);
                         } else{
-                            alert_message('Not inserted! ');
+                            // alert_message('Not inserted! ');
                         }
                     }
                 ?>
@@ -122,31 +122,6 @@ require 'connection.php';
 
     </div>
     <!-- Services div -->
-    <div class="services py-5" id="service">
-        <div class="container">
-            <h2 class="text-center mb-5">OUR SERVICES</h2>
-            <div class="row">
-                <?php
-                $qry = "select * from services where isActive='1'";
-                $result = mysqli_query($conn, $qry);
-                while ($r = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src=".<?php echo $r['image'] ?>" class="card-img-top" alt="Service 1">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $r['sname'] ?></h5>
-                            <p class="card-text"><?php echo $r['serviceDesc'] ?></p>
-                            <button class="btn btn-dark">Get Service</button>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
-    </div>
     <?php include './inc/footer.php'?>
 
     <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->

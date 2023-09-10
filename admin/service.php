@@ -30,10 +30,10 @@ $qry = mysqli_query($conn, $selectqry);
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">This is Services Table</h1>
+                    <h1 class="text-center mt-5">This is Services Table</h1><hr>
                     <div class="search mb-5">
-                        <label for="search">Search here... </label>
-                        <input type="text" name="" id="search" class="form-control w-25 border-dark">
+                        <label for="search">Search Services... </label>
+                        <input type="text" name="" id="search" class="form-control w-25 ">
                     </div>
                     <div class="table-responsive text-center">
                         <table class="table table-striped">
@@ -95,8 +95,7 @@ $qry = mysqli_query($conn, $selectqry);
     $(document).ready(function() {
         $('#search').on('keyup', function() {
             var searchTerm = $(this).val();
-            console.log('Search: ', searchTerm);
-            if (searchTerm !== '') {
+            if (searchTerm !== null) {
                 $.ajax({
                     url: 'live-search.php',
                     type: 'POST',
@@ -105,7 +104,6 @@ $qry = mysqli_query($conn, $selectqry);
                     },
                     success: function(data) {
                         $('#search-results').html(data);
-                        console.log("Suceess", data);
                     }
                 });
             } else {

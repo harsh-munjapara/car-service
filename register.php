@@ -43,8 +43,8 @@
 </head>
 
 <body>
-    <div class="container m-5">
-        <form action="" method="post" class="border border-dark rounded p-5" style="width: 50%; margin:auto;">
+    <div class="container my-5">
+        <form action="" method="post" class="border border-dark rounded p-5 w-50 m-auto" >
             <h1 style="text-align: center;">REGISTER</h1>
             <div class="mb-3">
                 <label for="fullname" class="form-label">Full Name</label>

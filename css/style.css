@@ -11,3 +11,6 @@
 .sidebar .nav-link:hover{
     transform: translateX(10px);
 }
+.card{
+    height:100% !important;
+}
