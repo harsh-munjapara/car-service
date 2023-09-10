@@ -13,18 +13,27 @@ require '../connection.php';
 
 if (isset($_POST['submit'])) {
     $new_sname = $_POST['sname'];
-    $new_img = $_POST['change_img'];
+    $new_image = $_FILES['image']['name'];
     $new_desc = $_POST['service_desc'];
     $new_price = $_POST['price'];
     $new_active = $_POST['is_active'];
 
-    // $qry = "insert into services values sname='{$new_sname}', serviceDesc='{$new_desc}',image='{$new_img}', isActive={$new_active}, price={$new_price}";
-    $qry = "INSERT INTO `services`(`sname`, `image`, `serviceDesc`, `isActive`, `price`) VALUES ('$new_sname','$new_desc','$new_img',$new_active,$new_price)";
+    // $qry = "insert into services values sname='{$new_sname}', serviceDesc='{$new_desc}',image='{$new_image}', isActive={$new_active}, price={$new_price}";
+    $qry = "INSERT INTO `services`(`sname`, `image`, `serviceDesc`, `isActive`, `price`) VALUES ('$new_sname','$new_image','$new_desc',$new_active,$new_price)";
     echo $qry. "<br>";
     mysqli_query($conn, $qry) or die('Not Inserted !!');
-    echo "Updated Successfully :)";
+
+    if (isset($_FILES['image'])) {
+           
+        $file_name = $_FILES['image']['name'];
+        $temp_file = $_FILES['image']['tmp_name'];
+        
+        move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
+    }
+
     header('Location: http://localhost/Car_service/admin/service.php');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +47,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -52,15 +60,15 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <form action="" method="post" class="border p-5" style="width: 50%; margin:auto;">
+                            <form action="" method="post" enctype="multipart/form-data" class="border p-5 w-50 m-auto">
                                 <h1 style="text-align: center;">Insert Record</h1>
                                 <div class="mb-3">
                                     <label for="sname" class="form-label">Serivce Name</label>
                                     <input type="text" class="form-control" id="sname" name="sname" value="" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="change_img" class="form-label">Choose Service Image</label>
-                                    <input type="file" class="form-control" id="change_img" name="change_img" value="">
+                                    <label for="change_image" class="form-label">Choose Service Image</label>
+                                    <input type="file" class="form-control" id="change_image" name="image" value="">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Service Description</label>
