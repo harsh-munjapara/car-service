@@ -32,6 +32,19 @@ require '../connection.php';
                         <!-- <label for="search">Search here... </label>
                         <input type="text" name="" id="search" class="form-control w-25">
                         <hr> -->
+                        <form action="" method="post">
+                            <label for="selct"> Select Column</label>
+                            <select name="select_col" id="" class="form-control w-25">
+                                <option value="">-- select --</option>
+                                <option value="id">id</option>
+                                <option value="oname">Owner Name</option>
+                                <option value="vname">Car Name</option>
+                            </select>
+                            <div class="mt-3">
+                                <input type="submit" name="asce" value="Ascending" class="btn btn-primary">
+                                <input type="submit" name="desc" value="Descending" class="btn btn-primary">
+                            </div>
+                        </form>
 
                     </div>
                     <div class="table-responsive text-center">
@@ -51,7 +64,20 @@ require '../connection.php';
                             </thead>
                             <tbody>
                                 <?php
+
                                 $qry = "select * from service_request";
+                                if (isset($_POST['asce'])) {
+                                    if (isset($_POST['select_col'])) {
+                                        $order_by = $_POST['select_col'];
+                                    }
+                                    $qry = "select * from service_request order by $order_by";
+                                }
+                                if (isset($_POST['desc'])) {
+                                    if (isset($_POST['select_col'])) {
+                                        $order_by = $_POST['select_col'];
+                                    }
+                                    $qry = "select * from service_request order by $order_by DESC";
+                                }
                                 $result = mysqli_query($conn, $qry);
                                 while ($r = mysqli_fetch_assoc($result)) :
                                 ?>
