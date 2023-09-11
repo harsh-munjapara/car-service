@@ -39,6 +39,7 @@ require '../connection.php';
                                 <option value="id">id</option>
                                 <option value="oname">Owner Name</option>
                                 <option value="vname">Car Name</option>
+                                <option value="status">Status</option>
                             </select>
                             <div class="mt-3">
                                 <input type="submit" name="asce" value="Ascending" class="btn btn-primary">
@@ -64,7 +65,6 @@ require '../connection.php';
                             </thead>
                             <tbody>
                                 <?php
-
                                 $qry = "select * from service_request";
                                 if (isset($_POST['asce'])) {
                                     if (isset($_POST['select_col'])) {
