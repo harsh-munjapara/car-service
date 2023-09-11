@@ -27,7 +27,7 @@
                 
                 if ($data_fetch['type'] == 'admin') {
                     $_SESSION['username'] = 'Boss'; 
-                    header('Location: ./admin/',);
+                    header('Location: ./admin/');
                 }
                 else{
                     $_SESSION['username'] = $data_fetch['username'];
