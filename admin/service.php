@@ -30,7 +30,8 @@ $qry = mysqli_query($conn, $selectqry);
             <?php require('sidebar.php') ?>
             <div class="col py-3">
                 <div class="container">
-                    <h1 class="text-center mt-5">This is Services Table</h1><hr>
+                    <h1 class="text-center mt-5">This is Services Table</h1>
+                    <hr>
                     <div class="search mb-5">
                         <label for="search">Search Services... </label>
                         <input type="text" name="" id="search" class="form-control w-25 ">
@@ -54,30 +55,26 @@ $qry = mysqli_query($conn, $selectqry);
                                 $result = mysqli_query($conn, $qry);
                                 while ($r = mysqli_fetch_assoc($result)) :
                                 ?>
-                                <tr>
-                                    <!-- <td><?php echo $r['sid'] ?></td> -->
-                                    <td><?php echo $r['sname'] ?></td>
-                                    <td>
-                                        <span class="image-icon">
-                                            <img src="..<?php echo $r['image'] ?>" alt="image"
-                                                class="img-fluid rounded">
-                                        </span>
-                                    </td>
-                                    <td><?php echo $r['serviceDesc'] ?></td>
-                                    <td><?php echo $r['price'] ?></td>
-                                    <td>
-                                        <i class="<?php echo $r['isActive'] ? 'fa fa-check' : 'fa fa-xmark' ?>"></i>
-                                    </td>
-                                    <td>
-                                        <div class="action d-flex column-gap-3">
-                                            <a href="edit-service.php?sid=<?php echo $r['sid'] ?>"
-                                                class="btn btn-success">Edit</a>
-                                            <a href="delete-service.php?sid=<?php echo $r['sid'] ?>"
-                                                class="btn btn-danger"
-                                                onclick="return confirm('Are you sure?')">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <!-- <td><?php echo $r['sid'] ?></td> -->
+                                        <td><?php echo $r['sname'] ?></td>
+                                        <td>
+                                            <span class="image-icon">
+                                                <img src="..<?php echo $r['image'] ?>" alt="image" class="img-fluid rounded">
+                                            </span>
+                                        </td>
+                                        <td><?php echo $r['serviceDesc'] ?></td>
+                                        <td><?php echo $r['price'] ?></td>
+                                        <td>
+                                            <i class="<?php echo $r['isActive'] ? 'fa fa-check' : 'fa fa-xmark' ?>"></i>
+                                        </td>
+                                        <td>
+                                            <div class="action d-flex column-gap-3">
+                                                <a href="edit-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-success">Edit</a>
+                                                <a href="delete-service.php?sid=<?php echo $r['sid'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
@@ -92,25 +89,25 @@ $qry = mysqli_query($conn, $selectqry);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#search').on('keyup', function() {
-            var searchTerm = $(this).val();
-            if (searchTerm !== null) {
-                $.ajax({
-                    url: 'live-search.php',
-                    type: 'POST',
-                    data: {
-                        query: searchTerm
-                    },
-                    success: function(data) {
-                        $('#search-results').html(data);
-                    }
-                });
-            } else {
-                $('#search-results').html('');
-            }
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                var searchTerm = $(this).val();
+                if (searchTerm !== null) {
+                    $.ajax({
+                        url: 'live-search.php',
+                        type: 'POST',
+                        data: {
+                            query: searchTerm
+                        },
+                        success: function(data) {
+                            $('#search-results').html(data);
+                        }
+                    });
+                } else {
+                    $('#search-results').html('');
+                }
+            });
         });
-    });
     </script>
 </body>
 

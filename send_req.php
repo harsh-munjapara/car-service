@@ -17,6 +17,7 @@ require 'connection.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -66,8 +67,7 @@ require 'connection.php';
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <textarea name="address" id="address" cols="30" rows="5" value="" class="form-control"
-                                required></textarea>
+                            <textarea name="address" id="address" cols="30" rows="5" value="" class="form-control" required></textarea>
                         </div>
                     </div>
                     <div class="col-6">
@@ -82,38 +82,37 @@ require 'connection.php';
                         <div class="mb-3">
                             <label for="vnumber" class="form-label">Select Services</label>
                             <hr>
-                            <?php 
-                                $qry="select * from services where isActive=1";
-                                $result=mysqli_query($conn,$qry) or die('Not come');
-                                while($r=mysqli_fetch_assoc($result)):
+                            <?php
+                            $qry = "select * from services where isActive=1";
+                            $result = mysqli_query($conn, $qry) or die('Not come');
+                            while ($r = mysqli_fetch_assoc($result)) :
                             ?>
-                            <label for="<?php echo $r['sname']?>"><?php echo $r['sname']?></label>
-                            <input type="checkbox" class="form-check-input" id="<?php echo $r['sname']?>"
-                                name="services[]" value="<?php echo $r['sname']?>" checked>
-                            <?php endwhile;?>
+                                <input type="checkbox" class="form-check-input" id="<?php echo $r['sname'] ?>" name="services[]" value="<?php echo $r['sname'] ?>" checked>
+                                <label for="<?php echo $r['sname'] ?>"><?php echo $r['sname'] ?></label>
+                            <?php endwhile; ?>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark" name="submit">Send Request</button>
-                <?php 
-                    if(isset($_POST['submit'])){
-                        // print_r($_POST);
-                        $oname=$_POST['oname'];
-                        $contact=$_POST['contact'];
-                        $address=$_POST['address'];
-                        $vnumber=$_POST['vnumber'];
-                        $vname=$_POST['vname'];
-                        $services=implode(',',$_POST['services']);
-                        $qry="INSERT INTO `service_request`(`oname`, `contact`, `address`, `vnumber`, `vname`, `services`) 
+                <?php
+                if (isset($_POST['submit'])) {
+                    // print_r($_POST);
+                    $oname = $_POST['oname'];
+                    $contact = $_POST['contact'];
+                    $address = $_POST['address'];
+                    $vnumber = $_POST['vnumber'];
+                    $vname = $_POST['vname'];
+                    $services = implode(',', $_POST['services']);
+                    $qry = "INSERT INTO `service_request`(`oname`, `contact`, `address`, `vnumber`, `vname`, `services`) 
                         VALUES ('$oname','$contact','$address','$vnumber','$vname','$services')";
-                        $result=mysqli_query($conn,$qry);
-                        if($result){
-                            // alert_message('Request send successfully!');
-                            header('Location: ./',);
-                        } else{
-                            // alert_message('Not inserted! ');
-                        }
+                    $result = mysqli_query($conn, $qry);
+                    if ($result) {
+                        // alert_message('Request send successfully!');
+                        header('Location: ./');
+                    } else {
+                        // alert_message('Not inserted! ');
                     }
+                }
                 ?>
                 <!-- <button type="submit" class="btn btn-success" name="back">Back</button> -->
             </form>
@@ -122,13 +121,13 @@ require 'connection.php';
 
     </div>
     <!-- Services div -->
-    <?php include './inc/footer.php'?>
+    <?php include './inc/footer.php' ?>
 
     <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-<?php 
+<?php
 ob_end_flush();
 ?>
