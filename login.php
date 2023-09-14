@@ -22,15 +22,15 @@
             // echo "<br> $password";
             // $confirm = password_verify($password, $main_pass);
 
+            $_SESSION['username'] = $data_fetch['username'];
+
             if ($main_pass == $password) {
                 echo "Login Successfully !!";
                 
                 if ($data_fetch['type'] == 'admin') {
-                    $_SESSION['username'] = 'Boss'; 
-                    header('Location: ./admin/');
+                    header('Location: ./admin/index.php');
                 }
                 else{
-                    $_SESSION['username'] = $data_fetch['username'];
                     header('Location: index.php');
                 }
             }

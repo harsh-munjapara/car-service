@@ -2,7 +2,7 @@
 session_start();
     // echo "<h1> $</h1>"
     // print_r($_SESSION);
-if ($_SESSION['username']!=='Boss') {
+if (!$_SESSION['username']) {
     header('Location: ../','');
 }
 

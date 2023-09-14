@@ -25,18 +25,28 @@ require 'connection.php';
 $selectqry = "select * from  user where username='$uname'";
 $result = mysqli_query($conn, $selectqry);
 $row=mysqli_fetch_array($result);
-if(isset($_POST['submit'])){
-    print_r($_POST);
-    $username=$_POST['username'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $qry="UPDATE `user` SET `username`='$username',`password`='$password',`email`='$email',`type`='user' where username='$uname'";
-    echo "$qry";
-    $res=mysqli_query($conn,$qry) or die('not updated');
-    if($res){
-        header("Location: ./view-profile.php");
+
+if(isset($_POST['submit'])) {
+    $new_username = $_POST['username'];
+    $new_email = $_POST['email'];
+    $new_pass = $_POST['password'];
+    $image = $_FILES['profile']['name'];
+
+    $qry = "update user set username = '{$new_username}', email = '{$new_email}', password = '{$new_pass}', img = '{$image}' where username = '{$uname}'";
+    // echo $qry;
+    mysqli_query($conn, $qry) or die('not updated');
+
+    if (isset($_FILES['profile'])) {
+        
+        $file_name = $_FILES['profile']['name'];
+        $temp_file = $_FILES['profile']['tmp_name'];
+        
+        move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
     }
+
+    header('Location: ./view-profile.php'); 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,14 +59,7 @@ if(isset($_POST['submit'])){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <style>
-    .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/car-image.jpg');
-        height: 100vh;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    </style>
+
 </head>
 
 <body>
@@ -72,7 +75,7 @@ if(isset($_POST['submit'])){
                             <div class="card login-form mb-0">
                                 <div class="card-body pt-5 shadow">
                                     <h4 class="text-center">Edit Your Profile</h4>
-                                    <form method="POST" action="">
+                                    <form method="POST" action="" enctype="multipart/form-data">
                                         <div class="form-group mb-4">
                                             <label>User name :</label>
                                             <input type="text" class="form-control" value="<?php echo $row['username']?>" name="username">
@@ -91,8 +94,9 @@ if(isset($_POST['submit'])){
                                             <label class="form-check-label">Profile Image :</label>
                                             <input type="file" class="form-control" name="profile">
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-dark" name="submit">Save</button>
+                                        <div class="">
+                                            <input type="submit" name="submit" value="submit" class="btn btn-dark">
+                                            <!-- <button type="submit" class="btn btn-dark" name="submit">Save</button> -->
                                             <a href="./view-profile.php" class="btn btn-dark">Cancle</a>
                                         </div>
                                     </form>

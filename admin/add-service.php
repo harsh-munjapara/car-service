@@ -25,8 +25,15 @@ if (isset($_POST['submit'])) {
 
     if (isset($_FILES['image'])) {
            
+        print_r($_FILES);
+        echo "<br>";
+
+        
         $file_name = $_FILES['image']['name'];
         $temp_file = $_FILES['image']['tmp_name'];
+
+        echo "$file_name"."<br>";
+        echo "$temp_file";
         
         move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
     }

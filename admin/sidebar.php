@@ -3,7 +3,12 @@
         <a href="" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4 d-none d-sm-inline"><i class="fa fa-car"></i> Car Service</span>
         </a>
+        
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li class="mt-2">
+                <a href="admin_profile.php"  class="nav-link text-white px-0 align-middle">
+                    <i class="fs-4 fa-solid fa-user"></i> <span class="ms-1 d-none d-sm-inline">Profile</span> </a>
+            </li>
             <li class="mt-2">
                 <a href="index.php"  class="nav-link text-white px-0 align-middle">
                     <i class="fs-4 fa fa-tachometer"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
@@ -24,7 +29,6 @@
                 <a href="../logout.php" class="nav-link text-white px-0 align-middle">
                     <i class="fs-4 fa fa-sign-out "></i> <span class="ms-1 d-none d-sm-inline">Log Out</span> </a>
             </li>
-
         </ul>
         <hr>
     </div>

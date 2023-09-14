@@ -5,7 +5,12 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
 
+$uname=$_SESSION['username'];
 require 'connection.php';
+
+$selectqry = "select * from user where username='{$uname}'";
+$result = mysqli_query($conn, $selectqry);
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,18 +24,18 @@ require 'connection.php';
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <style>
-    .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/car-image.jpg');
-        height: 100vh;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/car-image.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <?php include './inc/top-navbar.php'?>
+    <?php include './inc/top-navbar.php' ?>
 
     <!-- Hero div -->
     <div class="hero bg-dark text-white  py-5" id="home">
@@ -43,11 +48,10 @@ require 'connection.php';
             <a href="./send_req.php" class="btn btn-light btn-lg">Send Request</a>
         </div>
     </div>
-    <?php include './inc/footer.php'?>
+    <?php include './inc/footer.php' ?>
     <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 </body>
 

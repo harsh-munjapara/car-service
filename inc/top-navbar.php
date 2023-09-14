@@ -1,3 +1,4 @@
+
 <nav class="navbar shadow-lg navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: #e3f2fd;">
     <div class="container ps-5">
         <a class="navbar-brand" href="index.php">Car Service</a>
@@ -22,10 +23,10 @@
             <div class="dropdown">
                 <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img src="./img/profile.jpg" alt="" width="50px" height="50px" class="rounded-circle">
+                    <img src="./img/<?php echo $row['img']; ?>" alt="" width="50px" height="50px" class="rounded-circle">
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="./edit-profile.php">View Profile</a></li>
+                    <li><a class="dropdown-item" href="./view-profile.php">View Profile</a></li>
                     <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
                 </ul>
             </div>
