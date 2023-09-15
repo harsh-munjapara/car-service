@@ -1,7 +1,6 @@
 <?php
 session_start();
-// echo "<h1> $</h1>"
-// print_r($_SESSION);
+
 if (!isset($_SESSION['username'])) {
     header('Location: ../login.php');
 }
@@ -17,20 +16,23 @@ if (isset($_POST['submit'])) {
     $new_username = $_POST['username'];
     $new_email = $_POST['email'];
     $new_pass = $_POST['password'];
-    $image = $_FILES['profile']['name'];
 
-    $qry = "update user set username = '{$new_username}', email = '{$new_email}', password = '{$new_pass}', img = '{$image}' where username = '{$uname}'";
+    $qry = "update user set username = '{$new_username}', email = '{$new_email}', password = '{$new_pass}' where username = '{$uname}'";
     mysqli_query($conn, $qry) or die('not updated');
+    $_SESSION['username'] = $new_username;
 
-    if (isset($_FILES['profile'])) {
-        
+    if ($_FILES['profile']['name'] != '') {
+
         $file_name = $_FILES['profile']['name'];
         $temp_file = $_FILES['profile']['tmp_name'];
-        
-        move_uploaded_file($temp_file, '../img/'.$file_name) or die('Not Uploded');
+
+        $change_img =  "update user set img = '{$file_name}' where username = '{$uname}'";
+        mysqli_query($conn, $change_img) or die('not Uploded');
+
+        move_uploaded_file($temp_file, '../img/' . $file_name) or die('Not Uploded');
     }
 
-    header('Location: admin_profile.php'); 
+    header('Location: admin_profile.php');
 }
 
 ?>
@@ -67,21 +69,21 @@ if (isset($_POST['submit'])) {
                                             <form method="POST" action="" enctype="multipart/form-data">
                                                 <div class="form-group mb-4">
                                                     <label>User name :</label>
-                                                    <input type="text" class="form-control" value="<?php echo $row['username'] ?>" name="username">
+                                                    <input type="text" class="form-control" value="<?php echo $row['username']; ?>" name="username">
                                                 </div>
                                                 <div class="form-group mb-4">
                                                     <label>Email :</label>
-                                                    <input type="email" class="form-control" value="<?php echo $row['email'] ?>" name="email">
+                                                    <input type="email" class="form-control" value="<?php echo $row['email']; ?>" name="email">
                                                 </div>
 
                                                 <div class="form-group mb-4">
                                                     <label>Password:</label>
-                                                    <input type="password" class="form-control" value="<?php echo $row['password'] ?>" name="password">
+                                                    <input type="password" class="form-control" value="<?php echo $row['password'];  ?>" name="password">
                                                 </div>
 
                                                 <div class="form-group mb-4 ">
                                                     <label class="form-check-label">Profile Image :</label>
-                                                    <input type="file" class="form-control" name="profile" value="<?php echo $row['img'] ?>">
+                                                    <input type="file" class="form-control" name="profile">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- <button type="submit" class="btn btn-dark" name="submit">Save</button> -->

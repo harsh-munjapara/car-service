@@ -4,8 +4,12 @@ ob_start();
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
-
+$uname = $_SESSION['username'];
 require 'connection.php';
+
+$selectqry = "select * from  user where username='$uname'";
+$result = mysqli_query($conn, $selectqry);
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +63,7 @@ require 'connection.php';
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="oname" class="form-label">Owner Name</label>
-                            <input type="text" class="form-control" id="oname" name="oname" value="" required>
+                            <input type="text" class="form-control" id="oname" name="oname" value="<?php echo $row['username'] ?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="vname" class="form-label">Vehicle name</label>

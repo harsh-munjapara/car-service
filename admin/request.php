@@ -81,7 +81,7 @@ require '../connection.php';
                                 $result = mysqli_query($conn, $qry);
                                 while ($r = mysqli_fetch_assoc($result)) :
                                 ?>
-                                    <tr>
+                                    <tr class="bg-danger">
                                         <td><?php echo $r['id'] ?></td>
                                         <td><?php echo $r['oname'] ?></td>
                                         <td><?php echo $r['contact'] ?></td>
@@ -128,7 +128,6 @@ require '../connection.php';
                                                         echo 'Cancled';
                                                         break;
                                                 }
-
                                                 ?>
                                             </span>
                                         </td>

@@ -16,9 +16,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contect">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contect">Contact</a>
-                </li>
+
             </ul>
             <div class="dropdown">
                 <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"

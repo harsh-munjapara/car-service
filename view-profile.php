@@ -114,17 +114,19 @@ if (isset($_POST['submit'])) {
             while ($r = mysqli_fetch_array($records)) {
                 if ($r['oname'] == $uname) {
             ?>
-                    <div class="col-sm-4">
-                        <div class="card text-center my-3">
-                            <span>Car Name :</span><?php echo $r['vname'] ?>
-                            <span>Car Services :</span><?php echo $r['services'] ?>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Car Name : <?php echo $r['vname']; ?></li>
+                                <li class="list-group-item">Car Number : <?php echo $r['vnumber']; ?></li>
+                                <li class="list-group-item">Services : <?php echo $r['services']; ?></li>
+                            </ul>
                         </div>
                     </div>
             <?php
                 }
             }
             ?>
-            
         </div>
     </div>
     <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
