@@ -83,7 +83,8 @@ if (isset($_POST['submit'])) {
 
                                                 <div class="form-group mb-4 ">
                                                     <label class="form-check-label">Profile Image :</label>
-                                                    <input type="file" class="form-control" name="profile">
+                                                    <input type="file" class="form-control" name="profile"> 
+                                                    <!-- <input type="file" class="form-control" name="profile"> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- <button type="submit" class="btn btn-dark" name="submit">Save</button> -->
@@ -101,7 +102,12 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-
+    <!-- <script>
+    // JavaScript to clear the file input when a new file is selected
+    document.querySelector('input[type="file"]').addEventListener('change', function () {
+        this.previousElementSibling.innerHTML = ''; // Clear the old image name display
+    });
+</script> -->
 </body>
 
 </html>

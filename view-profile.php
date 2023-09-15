@@ -120,6 +120,25 @@ if (isset($_POST['submit'])) {
                                 <li class="list-group-item">Car Name : <?php echo $r['vname']; ?></li>
                                 <li class="list-group-item">Car Number : <?php echo $r['vnumber']; ?></li>
                                 <li class="list-group-item">Services : <?php echo $r['services']; ?></li>
+                                <li class="list-group-item">Status : <?php 
+                                switch ($r['status']) {
+                                    case 0:
+                                        echo "<span class='badge bg-warning'>Pendding</span>";
+                                        break;
+                                    case 1:
+                                        echo "<span class='badge bg-success'>Done</span>";
+                                        break;
+                                    case 2:
+                                        echo "<span class='badge bg-primary'>Active</span>";
+                                        break;
+                                    case 3:
+                                        echo "<span class='badge bg-danger'>Cancle</span>";
+                                        break;
+                                    
+                                    default:
+                                        # code...
+                                        break;
+                                } ?></li>
                             </ul>
                         </div>
                     </div>

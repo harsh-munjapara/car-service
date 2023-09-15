@@ -132,8 +132,10 @@ require '../connection.php';
                                             </span>
                                         </td>
                                         <td>
+                                            <div class="d-flex column-gap-3">
                                             <a href="edit-request.php?id=<?php echo $r['id'] ?>" class="btn btn-outline-success">Edit</a>
                                             <a href="delete-request.php?id=<?php echo $r['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
