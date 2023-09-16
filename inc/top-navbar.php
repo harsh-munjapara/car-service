@@ -22,6 +22,7 @@
                 <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img src="./img/<?php echo $row['img']; ?>" alt="" width="50px" height="50px" class="rounded-circle">
+                    <span class="text-white"><i class="fa-solid fa-caret-down"></i></span>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="./view-profile.php">View Profile</a></li>

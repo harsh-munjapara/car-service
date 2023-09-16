@@ -14,14 +14,24 @@ $arrdata = mysqli_fetch_array($qry);
 
 if (isset($_POST['update'])) {
     $new_sname = $_POST['sname'];
-    $new_img = $_POST['change_img'];
     $new_desc = $_POST['service_desc'];
     $new_price = $_POST['price'];
     $new_active = $_POST['is_active'];
-
+    // $new_img = ;
     $qry = "update services set sname='{$new_sname}', serviceDesc='{$new_desc}', isActive={$new_active}, price={$new_price}  where sid={$id}";
     echo $qry. "<br>";
     mysqli_query($conn, $qry) or die('Not Inserted !!');
+    if ($_FILES['change_img']['name'] != '') {
+        
+        $file_name = $_FILES['change_img']['name'];
+        $temp_file = $_FILES['change_img']['tmp_name'];
+        
+        $change_img =  "update services set image = '{$file_name}' where sid={$id}";
+        mysqli_query($conn, $change_img) or die('not Uploded');
+        
+        move_uploaded_file($temp_file, '../img/' . $file_name) or die('Not Uploded');
+    }
+    
     echo "Updated Successfully :)";
     header('Location: ./service.php');
 }
@@ -52,7 +62,7 @@ if (isset($_POST['update'])) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <form action="" method="post" class="border p-5" style="width: 50%; margin:auto;">
+                            <form action="" method="post" class="border p-5" style="width: 50%; margin:auto;" enctype="multipart/form-data">
                                 <h1 style="text-align: center;">EDIT RECORD</h1>
                                 <hr>
                                 <div class="mb-3">
@@ -61,7 +71,7 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="mb-3">
                                     <label for="change_img" class="form-label">Choose Service Image</label>
-                                    <input type="file" class="form-control" id="change_img" name="change_img" value="<?php echo $arrdata['image']; ?>">
+                                    <input type="file" class="form-control" id="change_img" name="change_img" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Service Description</label>

@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="form-group">
                                                     <!-- <button type="submit" class="btn btn-dark" name="submit">Save</button> -->
                                                     <input type="submit" name="submit" class="btn btn-dark" id="" value="Save">
-                                                    <a href="./view-profile.php" class="btn btn-dark">Cancle</a>
+                                                    <a href="./admin_profile.php" class="btn btn-dark">Cancle</a>
                                                 </div>
                                             </form>
                                         </div>

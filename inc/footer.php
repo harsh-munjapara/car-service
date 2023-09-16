@@ -9,7 +9,7 @@
                 ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src=".<?php echo $r['image']?>" class="card-img-top" alt="Service 1">
+                        <img src="./img/<?php echo $r['image']?>" class="card-img-top" alt="Service 1">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $r['sname']?></h5>
                             <p class="card-text"><?php echo $r['serviceDesc']?></p>
