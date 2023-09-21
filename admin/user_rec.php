@@ -48,7 +48,7 @@ $qry = mysqli_query($conn, $selectqry);
                                         <td><?php echo $r['id']; ?></td>
                                         <td><?php echo $r['username']; ?></td>
                                         <td><?php echo $r['email']; ?></td>
-                                        <td><a href="delete.php?sid=<?php echo $r['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this user?')">Delete</a></td>
+                                        <td><a href="delete.php?sid=<?php echo $r['username']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this user?')">Delete</a></td>
                                     </tr>
                             <?php
                                 }

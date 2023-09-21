@@ -2,6 +2,10 @@
 session_start();
     // echo "<h1> $</h1>"
     // print_r($_SESSION);
+
+if ($_SESSION['usertype'] != 'admin') {
+    header('Location: ../','');
+}
 if (!$_SESSION['username']) {
     header('Location: ../','');
 }

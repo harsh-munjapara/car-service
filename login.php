@@ -13,7 +13,7 @@
         $qry = mysqli_query($conn, $check_pass);
 
         $count_pass = mysqli_num_rows($qry);
- 
+
         if ($count_pass) {
             $data_fetch = mysqli_fetch_assoc($qry);
 
@@ -28,9 +28,11 @@
                 echo "Login Successfully !!";
                 
                 if ($data_fetch['type'] == 'admin') {
+                    $_SESSION['usertype'] = $data_fetch['type'];
                     header('Location: ./admin/index.php');
                 }
                 else{
+                    $_SESSION['usertype'] = $data_fetch['type'];
                     header('Location: index.php');
                 }
             }

@@ -120,9 +120,7 @@ $row = mysqli_fetch_array($result);
                 ?>
                 <!-- <button type="submit" class="btn btn-success" name="back">Back</button> -->
             </form>
-
         </div>
-
     </div>
     <!-- Services div -->
     <?php include './inc/footer.php' ?>
