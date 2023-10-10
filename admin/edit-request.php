@@ -4,6 +4,9 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
+if ($_SESSION['usertype'] != 'admin') {
+    header('Location: ../','');
+}
 
 require '../connection.php';
 
@@ -11,9 +14,7 @@ $id = $_GET['id'];
 $selectqry = "select * from service_request where id='{$id}'";
 $qry = mysqli_query($conn, $selectqry);
 $arrdata = mysqli_fetch_array($qry);
-$show = "select * from service_request where id={$id}";
-$data = mysqli_query($conn, $show) or die('Not Inserted !!');
-$row = mysqli_fetch_assoc($data);
+
 if (isset($_POST['update'])) {
     $status = $_POST['status'];
 
@@ -56,6 +57,11 @@ if (isset($_POST['update'])) {
                                 <h1 style="text-align: center;">Service Detail</h1>
                                 <hr>
                                 <div class="mb-3">
+                                    <?php
+                                        $show = "select * from service_request where id={$id}";
+                                        $data = mysqli_query($conn, $show) or die('Not Inserted !!');
+                                        $row = mysqli_fetch_assoc($data);
+                                    ?>
 
                                     <h4>Owner Name : <?php echo $row['oname'] ?></h4>
                                 </div>
@@ -66,7 +72,7 @@ if (isset($_POST['update'])) {
                                         <option value="0">Pending</option>
                                         <option value="1">Done</option>
                                         <option value="2">Active</option>
-                                        <option value="3">Canlced</option>
+                                        <option value="3">cancelled</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary" name="update">Change</button>

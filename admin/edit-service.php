@@ -4,6 +4,9 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
+if ($_SESSION['usertype'] != 'admin') {
+    header('Location: ../','');
+}
 
 require '../connection.php';
 

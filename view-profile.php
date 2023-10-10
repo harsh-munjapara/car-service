@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
                                         echo "<span class='badge bg-primary'>Active</span>";
                                         break;
                                     case 3:
-                                        echo "<span class='badge bg-danger'>Cancle</span>";
+                                        echo "<span class='badge bg-danger'>cancelled</span>";
                                         break;
                                     
                                     default:

@@ -4,6 +4,9 @@
 if (!isset($_SESSION['username'])) {
     header('Location: ../login.php');
 }
+if ($_SESSION['usertype'] != 'admin') {
+    header('Location: ../','');
+}
 
 $uname = $_SESSION['username'];
 require '../connection.php';

@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if ($_SESSION['usertype'] != 'admin') {
+    header('Location: ../','');
+}
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
 }
@@ -13,7 +15,7 @@ require '../connection.php';
 
 if (isset($_POST['submit'])) {
     $new_sname = $_POST['sname'];
-    $new_image = '/img/'.$_FILES['image']['name'];
+    $new_image = $_FILES['image']['name'];
     $new_desc = $_POST['service_desc'];
     $new_price = $_POST['price'];
     $new_active = $_POST['is_active'];

@@ -3,10 +3,10 @@ session_start();
     // echo "<h1> $</h1>"
     // print_r($_SESSION);
 
-if ($_SESSION['usertype'] != 'admin') {
+if (!$_SESSION['username']) {
     header('Location: ../','');
 }
-if (!$_SESSION['username']) {
+if ($_SESSION['usertype'] != 'admin') {
     header('Location: ../','');
 }
 

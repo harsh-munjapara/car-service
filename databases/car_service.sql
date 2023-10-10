@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 07:52 AM
+-- Generation Time: Sep 22, 2023 at 04:50 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -42,9 +42,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`sid`, `sname`, `image`, `serviceDesc`, `isActive`, `price`) VALUES
-(2, 'break repair', '/img/tireRotation.jpg', 'Ensure even tire wear and improve handling with tire rotation.', 1, 75000),
-(7, 'oil Change', '/img/oilchange.jpg', 'Themes: base black-tie blitzer cupertino dark-hive dot-luv eggplant excite-bike flick hot-sneaks humanity le-frog mint-choc overcast pepper-grinder redmond smoothness south-street start sunny swanky-purse trontastic ui-darkness ui-lightness vader', 1, 30000),
-(8, 'test', '/img/car3.jpg', 'test', 1, 23232);
+(2, 'break repair', 'car2jpg.jpg', 'Ensure even tire wear and improve handling with tire rotation.', 1, 75000),
+(7, 'oil Change', 'oilchange.jpg', 'Themes: base black-tie blitzer cupertino dark-hive dot-luv eggplant excite-bike flick hot-sneaks humanity le-frog mint-choc ', 1, 30000),
+(8, 'test', 'car4.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa modi, consectetur quibusdam deleniti perferendis labore at ab molestias nostrum ipsum!', 1, 100000);
 
 -- --------------------------------------------------------
 
@@ -70,11 +70,7 @@ CREATE TABLE `service_request` (
 INSERT INTO `service_request` (`id`, `oname`, `contact`, `address`, `vnumber`, `vname`, `services`, `status`) VALUES
 (11, 'sahil@123', 738782, 'hfhkah', '3874837', 'hasjhfah', 'break repair', 2),
 (18, 'sahil@123', 82573458, 'test1234', 'GJ05 AI20', 'test', 'break repair,oil Change', 1),
-(21, 'sahil@123', 2147483647, 'nbhjbkljhiukj', 'GJ05 AI20', 'swift', 'break repair,oil Change,test,test,hello', 3),
-(23, 'meetlo', 2147483647, '12,anmol row house,mota varachha , surat', 'GJ05 AI 2003', 'swift', 'break repair,oil Change', 2),
-(24, 'limbu10', 2147483647, '12, ghadpur,surat', 'GJ05 AI 2004', 'supra', 'break repair,oil Change,test,hello', 0),
-(25, 'limbu10', 2147483647, '12, ghadpur,suart', 'GJ05 AI 2022', 'camero', 'break repair,oil Change,hello', 0),
-(26, 'pandu', 2147483647, '12,abc,xyz,surat', 'GJ05 AI2012', 'abc', 'oil Change', 2);
+(21, 'sahil@123', 2147483647, 'nbhjbkljhiukj', 'GJ05 AI20', 'swift', 'break repair,oil Change,test,test,hello', 3);
 
 -- --------------------------------------------------------
 
@@ -88,7 +84,7 @@ CREATE TABLE `user` (
   `password` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `img` longtext
+  `img` varchar(100) DEFAULT 'profile.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,8 +93,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `type`, `img`) VALUES
 (1, 'harsh@123', '12345', 'harsh@gmail.com', 'admin', 'nit.jpg'),
-(2, 'harit123', '111111', 'hari@gmail.com', 'admin', 'image.jpg'),
-(17, 'sahil@123', 'qwert', 'sahil@gmail.com', 'user', 'image.jpg');
+(2, 'hari', '1234', 'hari@gmail.com', 'admin', 'harit.jpg'),
+(17, 'sahil@123', 'qwert', 'sahil@gmail.com', 'user', 'image.jpg'),
+(18, 'parth', '123', 'parth@gmail.com', 'user', NULL),
+(19, 'bharat', '123', 'bharat@gmail.com', 'user', 'car5.jpg');
 
 --
 -- Indexes for dumped tables
@@ -130,19 +128,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `service_request`
 --
 ALTER TABLE `service_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
